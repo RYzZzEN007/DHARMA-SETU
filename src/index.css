@@ -1,0 +1,367 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MonasteryVerse Design System - Inspired by Himalayan monasteries and Buddhist culture
+All colors MUST be HSL. */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Monastery Color Palette */
+    --monastery-brown: 20 45% 35%;           /* #8B4513 */
+    --golden-prayer: 43 76% 47%;            /* #DAA520 */
+    --saffron-orange: 17 100% 60%;          /* #FF6B35 */
+    --warm-beige: 60 56% 91%;               /* #F5F5DC */
+    --slate-gray: 180 25% 25%;              /* #2F4F4F */
+    --forest-green: 120 61% 34%;            /* #228B22 */
+    
+    /* Gradient Colors */
+    --sunrise-start: 36 76% 57%;            /* #FFA726 */
+    --sunrise-end: 14 87% 62%;              /* #FF7043 */
+    
+    /* Semantic Design System */
+    --background: 60 56% 91%;               /* warm-beige */
+    --foreground: 180 25% 25%;              /* slate-gray */
+
+    --card: 0 0% 100%;
+    --card-foreground: 180 25% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 180 25% 25%;
+
+    --primary: 20 45% 35%;                  /* monastery-brown */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 43 76% 47%;                /* golden-prayer */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 60 33% 85%;
+    --muted-foreground: 180 15% 45%;
+
+    --accent: 17 100% 60%;                  /* saffron-orange */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 60 25% 80%;
+    --input: 60 25% 85%;
+    --ring: 20 45% 35%;
+
+    --radius: 12px;
+
+    /* Custom Gradients */
+    --gradient-sunrise: linear-gradient(135deg, hsl(var(--sunrise-start)), hsl(var(--sunrise-end)));
+    --gradient-monastery: linear-gradient(145deg, hsl(var(--monastery-brown)), hsl(var(--golden-prayer)));
+    --gradient-saffron: linear-gradient(120deg, hsl(var(--saffron-orange)), hsl(var(--golden-prayer)));
+    
+    /* Shadows */
+    --shadow-monastery: 0 10px 30px -10px hsl(var(--monastery-brown) / 0.3);
+    --shadow-golden: 0 8px 25px -8px hsl(var(--golden-prayer) / 0.4);
+    --shadow-elevated: 0 20px 40px -15px hsl(var(--monastery-brown) / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+}
+
+@layer components {
+  /* Monastery-specific button variants */
+  .btn-monastery {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 
+           transition-all duration-300 rounded-xl px-6 py-3 font-medium
+           shadow-lg hover:shadow-xl transform hover:scale-105;
+  }
+  
+  .btn-golden {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90
+           transition-all duration-300 rounded-xl px-6 py-3 font-medium
+           shadow-lg hover:shadow-xl transform hover:scale-105;
+  }
+  
+  .btn-saffron {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90
+           transition-all duration-300 rounded-xl px-6 py-3 font-medium
+           shadow-lg hover:shadow-xl transform hover:scale-105;
+  }
+  
+  /* Monastery card with hover effects */
+  .monastery-card {
+    @apply bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl
+           transform transition-all duration-300 hover:scale-105 hover:-translate-y-2
+           border border-border/50 backdrop-blur-sm;
+  }
+  
+  /* Gradient backgrounds */
+  .bg-gradient-sunrise {
+    background: var(--gradient-sunrise);
+  }
+  
+  .bg-gradient-monastery {
+    background: var(--gradient-monastery);
+  }
+  
+  .bg-gradient-saffron {
+    background: var(--gradient-saffron);
+  }
+  
+  /* Prayer flags animation */
+  .prayer-flags {
+    @apply animate-pulse;
+    animation: flutter 3s ease-in-out infinite;
+  }
+  
+  /* Monk Avatar 3D Animations */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .monk-avatar-container {
+    animation: monk-float 4s ease-in-out infinite;
+  }
+  
+  .monk-avatar-wrapper {
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  
+  .monk-idle .monk-avatar-wrapper {
+    animation: monk-breathe 3s ease-in-out infinite;
+  }
+  
+  .monk-speaking .monk-avatar-wrapper {
+    animation: monk-speak 0.5s ease-in-out infinite alternate;
+  }
+  
+  .floating-chat-bubble {
+    animation: chat-float 3s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+  
+  /* Scrollbar Styling */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thumb-monastery-golden\/30::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .scrollbar-thumb-monastery-golden\/30::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--golden-prayer) / 0.3);
+    border-radius: 4px;
+  }
+  
+  .scrollbar-thumb-monastery-golden\/30::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  /* Quest progress glow effect */
+  .progress-glow {
+    box-shadow: 0 0 20px hsl(var(--golden-prayer) / 0.5);
+  }
+}
+
+@layer utilities {
+  /* Custom font utilities */
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-dancing {
+    font-family: 'Dancing Script', cursive;
+  }
+  
+  /* Text gradient utilities */
+  .text-gradient-monastery {
+    background: var(--gradient-monastery);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-sunrise {
+    background: var(--gradient-sunrise);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Keyframes for custom animations */
+@keyframes flutter {
+  0%, 100% {
+    transform: rotate(-2deg) scale(1);
+  }
+  50% {
+    transform: rotate(2deg) scale(1.02);
+  }
+}
+
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes quest-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--golden-prayer) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(var(--golden-prayer) / 0.6);
+  }
+}
+
+@keyframes monk-float {
+  0%, 100% { transform: translateY(0px) rotateY(0deg); }
+  25% { transform: translateY(-10px) rotateY(5deg); }
+  50% { transform: translateY(-5px) rotateY(0deg); }
+  75% { transform: translateY(-15px) rotateY(-5deg); }
+}
+
+@keyframes monk-breathe {
+  0%, 100% { transform: scale(1) rotateX(0deg); }
+  50% { transform: scale(1.05) rotateX(2deg); }
+}
+
+@keyframes monk-speak {
+  0% { transform: scale(1) rotateY(-2deg); }
+  100% { transform: scale(1.02) rotateY(2deg); }
+}
+
+@keyframes chat-float {
+  0%, 100% { transform: translateX(-50%) translateY(0px) rotateZ(0deg); }
+  33% { transform: translateX(-50%) translateY(-5px) rotateZ(1deg); }
+  66% { transform: translateX(-50%) translateY(-2px) rotateZ(-1deg); }
+}
+
+/* Enhanced Meditation Monk Styles */
+.monk-meditation-container {
+  transition: all 0.5s ease-in-out;
+}
+
+.monk-meditating {
+  animation: gentle-breathing 4s ease-in-out infinite;
+}
+
+.monk-speaking {
+  animation: gentle-speaking 2s ease-in-out infinite;
+}
+
+.meditation-pose {
+  filter: drop-shadow(0 10px 20px rgba(139, 69, 19, 0.3));
+  transition: all 0.3s ease;
+}
+
+.meditation-aura {
+  animation: aura-pulse 3s ease-in-out infinite;
+}
+
+.wisdom-energy {
+  animation: wisdom-flow 2s ease-in-out infinite;
+}
+
+@keyframes gentle-breathing {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.02) translateY(-2px); }
+}
+
+@keyframes gentle-speaking {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.03) rotate(-1deg); }
+  75% { transform: scale(1.03) rotate(1deg); }
+}
+
+@keyframes aura-pulse {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.1); }
+}
+
+@keyframes wisdom-flow {
+  0% { opacity: 0; transform: translateY(0) scale(1); }
+  50% { opacity: 1; transform: translateY(-20px) scale(1.2); }
+  100% { opacity: 0; transform: translateY(-40px) scale(0.8); }
+}
