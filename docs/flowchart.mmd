@@ -1,0 +1,9 @@
+flowchart TD
+    A[User] --> B[Frontend: React + Vite + Tailwind]
+    B --> C[Backend API / Server]
+    C --> D[Gemini API - AI Monk Chatbot]
+    C --> E[ElevenLabs API - Voice Response]
+    D --> C
+    E --> C
+    C --> B
+    B --> A
