@@ -11,7 +11,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import QRScannerComponent from '@/components/QRScanner';
 import VirtualTourModal from '@/components/VirtualTourModal';
 import MonasteryMapModal from '@/components/MonasteryMapModal';
-import monkAvatar from '/lovable-uploads/189bac6c-05ee-4b5a-9b09-e5b609298d78.png';
+import monkAvatar from '/uploads/189bac6c-05ee-4b5a-9b09-e5b609298d78.png';
 import { 
   ArrowLeft, 
   Camera, 
